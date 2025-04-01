@@ -37,4 +37,31 @@ class AuthCoordinator: Coordinator {
         let hostingController = UIHostingController(rootView: signUpView)
         navigationController.pushViewController(hostingController, animated: true)
     }
+    
+    func navigateToSignIn() {
+        showSignInScreen()
+    }
+    
+    func showSignInScreen() {
+        let signInViewModel = SignInViewModel(coordinator: self)
+        let signInView = SignInView(viewModel: signInViewModel)
+        let hostingController = UIHostingController(rootView: signInView)
+        navigationController.pushViewController(hostingController, animated: true)
+    }
+    
+    func backScreen() {
+        navigationController.popViewController(animated: true)
+    }
+    
+    func finish() {
+        removeCoordinator(self)
+        navigateToMain()
+    }
+    
+    func navigateToMain() {
+        let mainCoordinator = MainCoordinator(navigationController: navigationController)
+        childCoordinators.append(mainCoordinator)
+        mainCoordinator.start()
+    }
+    
 }

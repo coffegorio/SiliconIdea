@@ -14,6 +14,7 @@ class AppCoordinator: Coordinator {
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+        self.navigationController.isNavigationBarHidden = true
     }
     
     func start() {
@@ -36,9 +37,4 @@ class AppCoordinator: Coordinator {
         childCoordinators.append(authCoordinator)
         authCoordinator.start()
     }
-    
-    func removeCoordinator(_ coordinator: Coordinator) {
-        childCoordinators.removeAll { $0 === coordinator }
-    }
-    
 }

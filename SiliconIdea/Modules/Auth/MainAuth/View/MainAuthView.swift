@@ -20,6 +20,8 @@ struct MainAuthView: View {
             Color(colorScheme == .dark ? DarkThemeColors.backgroundColor : LightThemeColors.backgroundColor)
                 .ignoresSafeArea()
             
+            FloatingCirclesBackground(count: 10)
+            
             VStack(alignment: .leading, spacing: 20) {
                 
                 Spacer()
@@ -29,7 +31,7 @@ struct MainAuthView: View {
                     .fontWeight(.bold)
                     .foregroundStyle(Color(UnityColors.primaryColor))
                 Text("Создавай, презентуй, вдохновляй - где бы ты ни был.")
-                    .font(.title2)
+                    .font(Font(Fonts.title))
                     .foregroundStyle(Color(colorScheme == .dark ? LightThemeColors.backgroundColor : DarkThemeColors.backgroundColor))
                 
                 CustomButtonWrapper(title: "Начать!", isFill: true) {
@@ -38,7 +40,7 @@ struct MainAuthView: View {
                 .frame(height: 50)
                 
                 CustomButtonWrapper(title: "Войти", isFill: false) {
-                    //
+                    viewModel.showSignIn()
                 }
                 .frame(height: 50)
             }

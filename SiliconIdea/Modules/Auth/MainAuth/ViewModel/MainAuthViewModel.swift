@@ -17,4 +17,8 @@ class MainAuthViewModel {
     func showSignUp() {
         self.coordinator?.navigateToSignUp()
     }
+    
+    func showSignIn() {
+        self.coordinator?.navigateToSignIn()
+    }
 }

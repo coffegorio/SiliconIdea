@@ -1,20 +1,22 @@
 //
-//  SignUpView.swift
+//  SignInView.swift
 //  SiliconIdea
 //
-//  Created by Егорио on 29.03.2025.
+//  Created by Егорио on 30.03.2025.
 //
 
 import SwiftUI
 
-struct SignUpView: View {
+struct SignInView: View {
     
     @Environment(\.colorScheme) var colorScheme
     
-    @ObservedObject var viewModel: SignUpViewModel
+    @ObservedObject var viewModel: SignInViewModel
     
     var body: some View {
+        
         ZStack {
+            
             Color(colorScheme == .dark ? DarkThemeColors.backgroundColor : LightThemeColors.backgroundColor)
                 .ignoresSafeArea()
             
@@ -28,22 +30,32 @@ struct SignUpView: View {
                 
                 Spacer()
                 
-                Text("Как Вас зовут? 👋")
+                Text("Войдите в свою учетную запись")
                     .font(Font(Fonts.title))
                     .foregroundStyle(Color(colorScheme == .dark ? LightThemeColors.backgroundColor : DarkThemeColors.backgroundColor))
                 
-                CustomTextFieldWrapper(placeholder: "Ваше имя", leftImage: UIImage(systemName: "person.fill"), text: $viewModel.username)
+                CustomTextFieldWrapper(placeholder: "Email", leftImage: UIImage(systemName: "envelope.fill"), text: $viewModel.email)
                     .frame(height: 50)
                 
-                CustomButtonWrapper(title: "Продолжить", isFill: true) {
-                    viewModel.nextToMain()
+                CustomTextFieldWrapper(placeholder: "Пароль", leftImage: UIImage(systemName: "lock.fill"), text: $viewModel.password)
+                    .frame(height: 50)
+                
+                CustomButtonWrapper(title: "Войти", isFill: true) {
+
                 }
                 .frame(height: 50)
-                .opacity(viewModel.isButtonEnabled ? 1.0 : 0.5)
-                .disabled(!viewModel.isButtonEnabled)
+                .disabled(true)
+                
+                CustomButtonWrapper(title: "Забыли пароль?", isFill: false) {
+                    //
+                }
+                .frame(height: 50)
                 
             }
             .padding(30)
+            
         }
+        
     }
 }
+

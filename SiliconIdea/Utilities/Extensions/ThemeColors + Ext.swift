@@ -19,4 +19,8 @@ extension UIColor {
             return traitCollection.userInterfaceStyle == .dark ? DarkThemeColors.contentColor : LightThemeColors.contentColor
         }
     }
+    
+    static var textColor: UIColor {
+        return backgroundColor
+    }
 }
